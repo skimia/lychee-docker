@@ -59,7 +59,7 @@ RUN sed -i -e "s/max_execution_time\s*=\s*30/max_execution_time = 300/g" /etc/ph
 RUN sed -i -e "s/output_buffering\s*=\s*4096/output_buffering = Off/g" /etc/php5/fpm/php.ini
 RUN sed -i -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php5/fpm/php.ini
 RUN sed -i -e "s:;\s*session.save_path\s*=\s*\"N;/path\":session.save_path = /tmp:g" /etc/php5/fpm/php.ini
-
+RUN sed -i 's/;daemonize = yes/daemonize = no/g' /etc/php5/fpm/php-fpm.conf
 RUN chown -R www-data:www-data /tmp
 
 RUN php5enmod mcrypt
